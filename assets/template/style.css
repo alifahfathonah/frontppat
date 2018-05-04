@@ -1,0 +1,21 @@
+body{
+    background-color: #00a4da;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: .5rem;
+    color: #fff;
+}
+
+.col-lg-4 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    margin-bottom: -55px;
+}
+
+h5 {
+  color: #fff;
+}

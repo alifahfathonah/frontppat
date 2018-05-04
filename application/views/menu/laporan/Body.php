@@ -1,0 +1,170 @@
+<?php $this->load->view('menu/header'); ?>
+<?php $this->load->view('menu/navbar'); ?>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12" style="padding-top: 15px; padding-bottom: 20px;">
+        <div class="alert alert-info" role="alert">
+          <a href="<?php echo base_url()?>index.php/home">Home</a> / <a href="">Laporan Penerbitan Akta</a>
+        </div>
+      </div>
+      <div class="col-md-12 offset-md-0">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Tambah
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Laporan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form class="" action="<?php echo base_url()?>index.php/menu/laporan/tambah" method="post">
+                  <div class="form-group">
+                    <label>Bulan</label>
+                    <select class="custom-select" id="inputGroupSelect01" name="periode_bulan">
+                      <option selected>Pilih...</option>
+                      <?php
+                        $bulan=array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
+                        $angka=array("01","02","03","04","05","06","07","08","09","10","11","12");
+                        $jlh_bln=count($bulan);
+                        for($c=0; $c<$jlh_bln; $c+=1){
+                            echo"<option value=$angka[$c]> $bulan[$c] </option>";
+                        }
+                      ?>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Tahun</label>
+                    <select class="custom-select" id="inputGroupSelect01" name="periode_tahun">
+                      <option selected>Pilih...</option>
+                      <?php
+                        $thn_skr = date('Y');
+                        for ($x = $thn_skr; $x >= 2010; $x--) {
+                        ?>
+                            <option value="<?php echo $x ?>"><?php echo $x ?></option>
+                        <?php
+                        }
+                      ?>
+                    </select>
+                    <input type="hidden" name="status" value="Draf">
+                    <input type="hidden" name="ppat_id" value="<?php echo $this->session->userdata('ppat_id'); ?>">
+                    <input type="hidden" name="tgl_laporan" value="<?php echo $tgl=Date("d-m-Y H:i:s");?>">
+                  </div>
+                  <button type="submit" name="simpan" class="btn btn-success">Next</button>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Laporan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form class="" action="<?php echo base_url()?>index.php/menu/laporan/edit" method="post">
+                  <?php foreach ($record as $r) {} ?>
+                  <div class="form-group">
+                    <label>Bulan</label>
+                    <input type="hidden" name="id" value="<?php echo $r->id; ?>">
+                    <select class="custom-select" id="inputGroupSelect01" name="periode_bulan">
+                      <option selected>Pilih...</option>
+                      <?php
+                        $bulan=array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
+                        $angka=array("01","02","03","04","05","06","07","08","09","10","11","12");
+                        $jlh_bln=count($bulan);
+                        for($c=0; $c<$jlh_bln; $c+=1){
+                            echo"<option value=$angka[$c]> $bulan[$c] </option>";
+                        }
+                      ?>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Tahun</label>
+                    <select class="custom-select" id="inputGroupSelect01" name="periode_tahun">
+                      <option selected>Pilih...</option>
+                      <?php
+                        $thn_skr = date('Y');
+                        for ($x = $thn_skr; $x >= 2010; $x--) {
+                        ?>
+                            <option value="<?php echo $x ?>"><?php echo $x ?></option>
+                        <?php
+                        }
+                      ?>
+                    </select>
+                    <input type="hidden" name="status" value="Draf">
+                    <input type="hidden" name="ppat_id" value="<?php echo $this->session->userdata('ppat_id'); ?>">
+                    <input type="hidden" name="tgl_laporan" value="<?php echo $tgl=Date("d-m-Y H:i:s");?>">
+                  </div>
+                  <button type="submit" name="edit" class="btn btn-success">Edit</button>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <!-- Table -->
+        <table id="table_id" class="display">
+            <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">Bulan</th>
+                  <th scope="col">Tahun</th>
+                  <th scope="col">Tanggal Laporan</th>
+                  <th scope="col">Status</th>
+                  <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+              <?php
+               $no=1;
+               foreach ($record as $r) {
+                 echo "<tr>
+                       <td>$no</td>
+                       <td>$r->periode_bulan</td>
+                       <td>$r->periode_tahun</td>
+                       <td>$r->tgl_laporan</td>
+                       <td>$r->status</td>
+                       <td>
+                         <div class='btn btn-warning'>
+                           <a href='menu/laporan/detail/$r->id' style='color: #fff;'>Detail</a>
+                         </div>
+                         <div class='btn btn-success'>
+                           <a href='menu/laporan/edit/$r->id' style='color: #fff;' data-toggle='modal' data-target='#exampleModal1'>Edit</a>
+                         </div>
+                         <div class='btn btn-danger'>
+                           <a href='menu/laporan/hapus/$r->id' style='color: #fff;'>Hapus</a>
+                         </div>
+                         <div class='btn btn-primary'>
+                           <a href='menu/laporan/kirim/$r->id' style='color: #fff;'>Kirim</a>
+                         </div>
+                       </td>
+                 </tr>";
+                 $no++;
+               }
+               ?>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+<?php $this->load->view('menu/footer'); ?>
