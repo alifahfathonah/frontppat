@@ -67,12 +67,17 @@
                     <input type="text" class="form-control" name="no_sk_ppat" placeholder="Masukkan No SK PTTK anda" required="">
                   </div>
                   <div class="form-group">
-                    <label style="color: #000;">Password Baru</label>
+                    <label style="color: #000;">Password</label>
                     <input type="password" class="form-control" name="password" placeholder="Masukkan password baru anda" required="">
                   </div>
                   <div class="form-group">
-                    <label style="color: #000;">Re-Password</label>
+                    <label style="color: #000;">Ulangi Password</label>
                     <input type="password" class="form-control" name="re_password" placeholder="Masukkan kembali password baru anda" required="">
+                  </div>
+                  <div class="form-group">
+                    <label style="color: #000;">Kode Keamanan</label>
+                    <?=$image;?>
+                    <input type="text" class="form-control" name="captcha_code" placeholder="Masukkan kode keamanan" required="">
                   </div>
                   <button type="submit" name="reset" class="btn btn-success">Reset</button>
                 </form>
