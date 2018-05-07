@@ -153,13 +153,13 @@
                                  <a href='menu/laporan/detail/$r->id' style='color: #fff;'>Detail</a>
                                </div>
                                <div class='btn btn-success'>
-                                 <a href='../menu/laporan/edit/$r->id' style='color: #fff;' data-toggle='modal' data-target='#exampleModal1'>Edit</a>
+                                 <a href='menu/laporan/edit/$r->id' style='color: #fff;' data-toggle='modal' data-target='#exampleModal1'>Edit</a>
                                </div>
                                <div class='btn btn-danger'>
-                               <center><a href='../menu/laporan/hapus/$r->id' style='color: #fff;' class='confirmation1'>Hapus</a></center>
+                               <center><a href='menu/laporan/hapus/$r->id' style='color: #fff;' class='confirmation1'>Hapus</a></center>
                                </div>
                                <div class='btn btn-primary'>
-                                 <a href='../menu/laporan/kirim/$r->id' style='color: #fff;'>Kirim</a>
+                                 <a href='menu/laporan/kirim/$r->id' style='color: #fff;'>Kirim</a>
                                </div>
                              </td>
                        </tr>";
