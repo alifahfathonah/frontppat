@@ -69,7 +69,7 @@ class Login extends CI_Controller {
 	}
 
 	public function reset(){
-		if (isset($captcha)) {
+		if (isset($_POST['reset'])) {
 	  	if (strtoupper($captcha)==strtoupper($word)) {
 				$data = array(
 						'no_sk_ppat' => $this->input->post('no_sk_ppat')
