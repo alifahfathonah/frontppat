@@ -64,8 +64,8 @@
             </div>
             <div class="form-group">
               <label>Daerah Kerja</label>
-              <input type="text" class="form-control" id="alamat_ppat" name="alamat_ppat" rows="3">
-              <!-- <textarea class="form-control" id="alamat_ppat" name="alamat_ppat" rows="3"></textarea> -->
+              <!-- <input type="text" class="form-control" id="alamat_ppat" name="alamat_ppat" rows="3"> -->
+              <textarea class="form-control" name="alamat_ppat" required="" rows="3"></textarea>
             </div>
             <div class="form-group">
               <label>Kode Keamanan</label>

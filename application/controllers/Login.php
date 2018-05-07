@@ -20,7 +20,7 @@ class Login extends CI_Controller {
         'pool' => '0123456789', #tipe captcha (angka/huruf, atau kombinasi dari keduanya)
 
         'colors' => array(
-                'background' => array(242, 242, 242),
+                'background' => array(255, 237, 0),
                 'border' => array(255, 255, 255),
                 'text' => array(0, 0, 0),
                 'grid' => array(255, 40, 40))
@@ -68,11 +68,32 @@ class Login extends CI_Controller {
 	 	}
 	}
 
-	function logout()
+	public function reset(){
+		$data = array(
+				'no_sk_ppat' => $this->input->post('no_sk_ppat')
+		);
+		$cek = $this->m_login->login($data);
+		if ($cek->num_rows() == 1){
+			$pass = $this->input->post('password');
+			$re   = $this->input->post('re_password');
+			if ($pass==$re) {
+				$this->m_login->reset_pass();
+					echo " <script>alert('Password berhasil di reset!');history.go(-1);</script>";
+			}
+			else {
+				echo " <script>alert('Password tidak cocok!');history.go(-1);</script>";
+			}
+		}
+		else {
+			echo " <script>alert('No SK PTTK tidak ditemukan!');history.go(-1);</script>";
+		}
+	}
+
+	public function logout()
 	{
 			session_destroy();
 			echo " <script>alert('Berhasil logout!');history.go(-1);</script>";
-			redirect('login');
+			// redirect('login');
 	}
 
 

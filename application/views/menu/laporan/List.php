@@ -13,19 +13,17 @@
           <a href="<?php echo base_url()?>index.php/home">Home</a> / <a href="">Laporan Penerbitan Akta</a> / Daftar Penerbitan Akta
         </div>
       </div>
-      <div class="col-md-4 offset-md-0">
+      <div class="col-md-3 offset-md-0">
         <ul class="list-group">
-          <li class="list-group-item list-group-item-primary">Bulan :</li>
-          <li class="list-group-item list-group-item-secondary">Tahun : </li>
+          <?php
+            foreach ($detail as $a) {
+              echo "
+              <li class='list-group-item list-group-item-primary'><center>Bulan : $a->periode_bulan</center></li>
+              <li class='list-group-item list-group-item-secondary'><center>Tahun : $a->periode_tahun</center></li>
+              ";
+            }
+          ?>
         </ul>
-        <hr>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Tambah</button>
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Edit</button>
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Hapus</button>
-        <div class="btn btn-success">
-          <a href="<?php echo base_url()?>index.php/laporan" style="color: #fff;">Selesai</a>
-        </div>
-
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -37,14 +35,20 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form class="" action="<?php echo base_url()?>index.php/menu/laporan/tambah" method="post">
+                <form class="" action="<?php echo base_url()?>index.php/menu/laporan/tambah_laporan_list" method="post">
                   <div class="form-group">
+                    <?php
+                      foreach ($detail as $a) {
+                        echo "<input type='hidden' class='form-control' name='data_laporan_id' value='$a->id'>";
+                      }
+                    ?>
                     <label>No Akta</label>
                     <input type="text" class="form-control" name="no_akta" required="">
                   </div>
                   <div class="form-group">
                     <label>Tanggal Akta</label>
-                    <input class="form-control" id="datepicker" name="tgl_akta" width="300" required="">
+                    <!-- <input class="form-control" id="datepicker" name="tgl_akta" width="400" required=""> -->
+                    <input class="form-control" type="date"  id="example-date-input" name="tgl_akta">
                   </div>
                   <div class="form-group">
                     <label>Bentuk Perbuatan Hukum</label>
@@ -57,7 +61,7 @@
                   </div>
                   <div class="form-group">
                     <label>Alamat</label>
-                    <input type="text" class="form-control" name="p_mengalihkan_alamat" required="">
+                    <textarea class="form-control" name="p_mengalihkan_alamat" required="" rows="3"></textarea>
                   </div>
                   <div class="form-group">
                     <label>NPWP</label>
@@ -70,7 +74,7 @@
                   </div>
                   <div class="form-group">
                     <label>Alamat</label>
-                    <input type="text" class="form-control" name="p_menerima_alamat" required="">
+                    <textarea class="form-control" name="p_menerima_alamat" required="" rows="3"></textarea>
                   </div>
                   <div class="form-group">
                     <label>NPWP</label>
@@ -79,15 +83,15 @@
                   <div class="form-group">
                     <hr>
                     <label>Jenis dan Nomor Hak</label>
-                    <input type="text" class="form-control" name="jenis_dan_nomor_hal" required="">
+                    <input type="text" class="form-control" name="jenis_dan_nomor_hak" required="">
                   </div>
                   <div class="form-group">
                     <label>Letak Tanah dan Bangunan</label>
-                    <input type="text" class="form-control" name="letak_tanah_dan_bangunan" required="">
+                    <textarea class="form-control" name="letak_tanah_dan_bangunan" required="" rows="3"></textarea>
                   </div>
                   <div class="form-group">
                     <label>Luas Tanah</label>
-                    <input type="number" class="form-control" name="luas_tanah" placeholder="m2" required="">
+                    <input type="number" class="form-control" name="luas_tanah"  placeholder="m2" required="">
                   </div>
                   <div class="form-group">
                     <label>Luas Bangunan</label>
@@ -95,19 +99,30 @@
                   </div>
                   <div class="form-group">
                     <label>Harga Transaksi</label>
-                    <input type="number" class="form-control" name="harga-transaksi" required="">
+                    <input type="number" class="form-control" name="harga_transaksi" required="">
                   </div>
                   <div class="form-group">
                     <label>NOP SPPT PBB</label>
-                    <input type="text" class="form-control" name="sppt_pbb_nop_tahun" required="">
+                    <select class="custom-select" id="inputGroupSelect01" name="sppt_pbb_nop_tahun" required="">
+                      <option selected>Pilih...</option>
+                      <?php
+                        $thn_skr = date('Y');
+                        for ($x = $thn_skr; $x >= 2010; $x--) {
+                        ?>
+                            <option value="<?php echo $x ?>"><?php echo $x ?></option>
+                        <?php
+                        }
+                      ?>
+                    </select>
+                    <!-- <input type="text" class="form-control" name="sppt_pbb_nop_tahun" required=""> -->
                   </div>
                   <div class="form-group">
                     <label>NJOP SPPT PBB</label>
-                    <input type="text" class="form-control" name="sppt_pbb_njop" required="">
+                    <input type="number" class="form-control" name="sppt_ppb_njop" required="">
                   </div>
                   <div class="form-group">
                     <label>Tanggal</label>
-                    <input class="form-control" id="datepicker" name="ssp_tanggal" width="300" required="">
+                    <input class="form-control" type="date"  id="example-date-input" name="ssp_tanggal">
                   </div>
                   <div class="form-group">
                     <label>Nominal SSP</label>
@@ -115,7 +130,7 @@
                   </div>
                   <div class="form-group">
                     <label>Tanggal SSPD BPHTB</label>
-                    <input class="form-control" id="datepicker" name="sspd_bphtb_tanggal" width="300" required="">
+                    <input class="form-control" type="date"  id="example-date-input" name="sspd_bphtb_tanggal">
                   </div>
                   <div class="form-group">
                     <label>Nominal SSPD BPHTB</label>
@@ -123,7 +138,7 @@
                   </div>
                   <div class="form-group">
                     <label>Keterangan</label>
-                    <input type="text" class="form-control" name="keterangan" required="">
+                    <textarea class="form-control" name="keterangan" required="" rows="3"></textarea>
                   </div>
                   <button type="submit" name="simpan" class="btn btn-success">Simpan</button>
                 </form>
@@ -137,39 +152,86 @@
         <hr>
       </div>
       <div class="col-md-12 offset-md-0">
-        <!-- Table -->
-        <table id="table_id" class="display">
-            <thead>
+        <div class="card border-info mb-3">
+          <div class="card-header">
+            <!-- <center>Daftar Penerbitan Akta</center> <hr> -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Tambah</button>
+            <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Edit</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Hapus</button> -->
+            <div class="btn btn-success">
+              <a href="<?php echo base_url()?>index.php/laporan" style="color: #fff;">Selesai</a>
+            </div>
+          </div>
+          <div class="card-body">
+            <div style="overflow-x:auto;">
+              <table>
                 <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">Akta</th>
-                  <th scope="col">Bentuk Perbuatan Hukum</th>
-                  <th scope="col">Nama Alamat & NPWP</th>
-                  <th scope="col">Jenis & nomor hak</th>
-                  <!-- <th scope="col">Letak Tanah & Bangunan</th>
-                  <th scope="col">Luas</th>
-                  <th scope="col">Harga transaksi perolehan/pengalihan hak</th>
-                  <th scope="col">SPTT PBB</th>
-                  <th scope="col">SSP</th>
-                  <th scope="col">SSPD BPHTB</th>
-                  <th scope="col">Keterangan</th> -->
+                  <th rowspan="2">No</th>
+                  <th colspan="2"><center>Akta</center></th>
+                  <th rowspan="2"><center>Bentuk Perbuatan Hukum</center></th>
+                  <th colspan="2"><center>Nama Alamat dan NPWP</center></th>
+                  <th rowspan="2"><center>Jenis dan Nomor Hak</center></th>
+                  <th colspan="2"><center>Luas</center></th>
+                  <th rowspan="2"><center>Harga Transaksi Perolehan/Pengalihan Hak</center></th>
+                  <th colspan="2"><center>SPPT PBB</center></th>
+                  <th colspan="2"><center>SSP</center></th>
+                  <th colspan="2"><center>SSPD BPHTB</center></th>
+                  <th rowspan="2">Keterangan</th>
+                  <th rowspan="2">Aksi</th>
                 </tr>
-            </thead>
-            <tbody>
-              <?php
-               $no=1;
-                 echo "<tr>
-                       <td>$no</td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-
-                 </tr>";
-                 $no++;
-               ?>
-            </tbody>
-        </table>
+                <tr>
+                  <th><center>Nomor</center></td>
+                  <th>Tanggal</td>
+                  <th><center>Pihak Yang Mengalihkan</center></td>
+                  <th><center>Pihak Yang Menerima</center></td>
+                  <th><center>Tanah</center></td>
+                  <th><center>Bangunan</center></td>
+                  <th><center>NOP Tahun</center></td>
+                  <th><center>NJOP</center></th>
+                  <th><center>Tanggal</center></th>
+                  <th><center>Rp</center></th>
+                  <th><center>Tanggal</center></th>
+                  <th><center>Rp</center></th>
+                </tr>
+                <tr>
+                  <?php
+                   $no=1;
+                   foreach ($laporan as $r) {
+                     echo "<tr>
+                           <td>$no</td>
+                           <td>$r->no_akta</td>
+                           <td><center>$r->tgl_akta</center></td>
+                           <td>$r->bentuk_perbuatan_hukum</td>
+                           <td>$r->p_mengalihkan_nama</td>
+                           <td>$r->p_menerima_nama</td>
+                           <td>$r->jenis_dan_nomor_hak</td>
+                           <td>$r->luas_tanah</td>
+                           <td>$r->luas_bangunan</td>
+                           <td>$r->harga_transaksi</td>
+                           <td><center>$r->sppt_pbb_nop_tahun</center></td>
+                           <td>$r->sppt_ppb_njop</td>
+                           <td><center>$r->ssp_tanggal</center></td>
+                           <td>$r->ssp_nominal</td>
+                           <td><center>$r->sspd_bphtb_tanggal</center></td>
+                           <td>$r->sspd_bphtb_nominal</td>
+                           <td>$r->keterangan</td>
+                           <td>
+                             <div class='btn btn-success'>
+                               <center><a href='../edit_laporan_list/$r->id' style='color: #fff;'>Edit</a></center>
+                             </div>
+                             <div class='btn btn-danger'>
+                               <center><a href='../hapus_laporan_list/$r->id' style='color: #fff;' class='confirmation'>Hapus</a></center>
+                             </div>
+                           </td>
+                     </tr>";
+                     $no++;
+                   }
+                   ?>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -178,6 +240,12 @@
       $('#datepicker').datepicker({
           showOtherMonths: true
       });
+  </script>
+
+  <script type="text/javascript">
+    $('.confirmation').on('click', function () {
+        return confirm('Apakah yakin ingin menghapus data?');
+    });
   </script>
 
 <?php $this->load->view('menu/footer'); ?>

@@ -46,8 +46,42 @@
               <input type="text" class="form-control" name="captcha_code" required="">
             </div>
             <button type="submit" class="btn btn-success" style="color: #fff;">Login</button>
-            <a href="#" style="color: #fff;">Lupa Password?</a>
+            <a href="#" style="color: #fff;" data-toggle="modal" data-target="#exampleModal">Lupa Password?</a>
           </form>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="color: #000;">Lupa Password?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form class="" action="<?php echo base_url()?>index.php/login/reset" method="post">
+                  <div class="form-group">
+                    <label style="color: #000;">No SK PTTK</label>
+                    <input type="text" class="form-control" name="no_sk_ppat" placeholder="Masukkan No SK PTTK anda" required="">
+                  </div>
+                  <div class="form-group">
+                    <label style="color: #000;">Password Baru</label>
+                    <input type="password" class="form-control" name="password" placeholder="Masukkan password baru anda" required="">
+                  </div>
+                  <div class="form-group">
+                    <label style="color: #000;">Re-Password</label>
+                    <input type="password" class="form-control" name="re_password" placeholder="Masukkan kembali password baru anda" required="">
+                  </div>
+                  <button type="submit" name="reset" class="btn btn-success">Reset</button>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="col-lg-12">
           <h5><center>Belum Mempunyai akun?</center></h5>
@@ -61,7 +95,7 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="<?php echo base_url()?>assets/template/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="<?php echo base_url()?>assets/template/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>

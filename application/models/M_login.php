@@ -42,7 +42,7 @@
     function reset_pass(){
       $data=array(
                   'password'  => md5($this->input->post('password')));
-      $this->db->where('ppat_id',$this->input->post('ppat_id'));
+      $this->db->where('no_sk_ppat',$this->input->post('no_sk_ppat'));
       $this->db->update('data_ppat',$data);
     }
 

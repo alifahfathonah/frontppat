@@ -11,6 +11,22 @@
     <!-- Datatables -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/plugin/DataTables/datatables.min.css"/>
 
+    <style>
+      table {
+          border-collapse: collapse;
+          border-spacing: 0;
+          width: 100%;
+          border: 0px solid #ddd;
+      }
+
+      th, td {
+          text-align: left;
+          padding: 8px;
+          border: 1px solid black;
+      }
+
+      /* tr:nth-child(even){background-color: #f2f2f2} */
+    </style>
     <title></title>
   </head>
   <body>

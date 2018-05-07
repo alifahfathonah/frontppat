@@ -9,10 +9,9 @@ class Laporan extends CI_Controller {
 			$this->load->model('m_laporan');
 	}
 
-	public function index()
-	{
+	public function index(){
 		if ($this->session->userdata('logged_in') == 'Sudah Login') {
-			$data['record']= $this->m_laporan->select_all()->result();
+			$data['record']= $this->m_laporan->data_laporan()->result();
 			$this->load->view('menu/laporan/body', $data);
 		}
 		else {
@@ -20,8 +19,7 @@ class Laporan extends CI_Controller {
 		}
 	}
 
-	public function tambah()
-	{
+	public function tambah(){
 		if (isset($_POST['simpan'])) {
 			$status = 'Draf';
 			$data = array(
@@ -35,7 +33,7 @@ class Laporan extends CI_Controller {
 			}
 			else {
 				$this->m_laporan->tambah($status);
-				redirect('menu/laporan');
+				echo " <script>alert('Laporan berhasil ditambah!');history.go(-1);</script>";
 			}
 		}
 		else {
@@ -46,7 +44,8 @@ class Laporan extends CI_Controller {
 
 	public function detail($id){
 		if ($this->session->userdata('logged_in')) {
-			$data['laporan'] = $this->m_laporan->detail($id);
+			$data['detail'] = $this->m_laporan->detail($id)->result();
+			$data['laporan'] = $this->m_laporan->list_laporan($id)->result();
 			$this->load->view('menu/laporan/list',$data);
 		}
 		else {
@@ -97,6 +96,47 @@ class Laporan extends CI_Controller {
 			$this->m_laporan->kirim($id);
 			echo " <script>alert('Laporan berhasil dikirim!');history.go(-1);</script>";
 			//redirect('menu/laporan');
+		}
+		else {
+			redirect('login');
+		}
+	}
+
+	public function tambah_laporan_list(){
+		if ($this->session->userdata('logged_in')) {
+			if (isset($_POST['simpan'])) {
+					$this->m_laporan->tambah_list_laporan();
+					echo " <script>alert('Tambah penerbitan akta berhasil!');history.go(-1);</script>";
+			}
+			else {
+				echo " <script>alert('Tambah penerbitan akta gagal!');history.go(-1);</script>";
+			}
+		}
+		else {
+			redirect('login');
+		}
+	}
+
+	public function edit_laporan_list($id){
+		if ($this->session->userdata('logged_in')) {
+			if (isset($_POST['simpan'])) {
+				$this->m_laporan->edit_list_laporan($id);
+				echo " <script>alert('Edit data penerbitan akta berhasil!');history.go(-1);</script>";
+			}
+			else {
+				$data['record']= $this->m_laporan->cek_list_laporan($id)->result();
+				$this->load->view('menu/laporan/edit',$data);
+			}
+		}
+		else {
+			redirect('login');
+		}
+	}
+
+	public function hapus_laporan_list($id){
+		if ($this->session->userdata('logged_in')) {
+			$this->m_laporan->hapus_list_laporan($id);
+			echo " <script>alert('Data berhasil dihapus!');history.go(-1);</script>";
 		}
 		else {
 			redirect('login');

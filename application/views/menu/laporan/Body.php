@@ -3,17 +3,12 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-lg-12" style="padding-top: 15px; padding-bottom: 20px;">
+      <div class="col-lg-12" style="padding-top: 15px;">
         <div class="alert alert-info" role="alert">
           <a href="<?php echo base_url()?>index.php/home">Home</a> / <a href="">Laporan Penerbitan Akta</a>
         </div>
       </div>
       <div class="col-md-12 offset-md-0">
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-          Tambah
-        </button>
-
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -121,50 +116,69 @@
           </div>
         </div>
         <hr>
-        <!-- Table -->
-        <table id="table_id" class="display">
-            <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">Bulan</th>
-                  <th scope="col">Tahun</th>
-                  <th scope="col">Tanggal Laporan</th>
-                  <th scope="col">Status</th>
-                  <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-              <?php
-               $no=1;
-               foreach ($record as $r) {
-                 echo "<tr>
-                       <td>$no</td>
-                       <td>$r->periode_bulan</td>
-                       <td>$r->periode_tahun</td>
-                       <td>$r->tgl_laporan</td>
-                       <td>$r->status</td>
-                       <td>
-                         <div class='btn btn-warning'>
-                           <a href='menu/laporan/detail/$r->id' style='color: #fff;'>Detail</a>
-                         </div>
-                         <div class='btn btn-success'>
-                           <a href='menu/laporan/edit/$r->id' style='color: #fff;' data-toggle='modal' data-target='#exampleModal1'>Edit</a>
-                         </div>
-                         <div class='btn btn-danger'>
-                           <a href='menu/laporan/hapus/$r->id' style='color: #fff;'>Hapus</a>
-                         </div>
-                         <div class='btn btn-primary'>
-                           <a href='menu/laporan/kirim/$r->id' style='color: #fff;'>Kirim</a>
-                         </div>
-                       </td>
-                 </tr>";
-                 $no++;
-               }
-               ?>
-            </tbody>
-        </table>
+        <div class="col-md-12 offset-md-0">
+          <div class="card card border-info mb-3">
+            <div class="card-header">
+              <!-- <center>Data Laporan</center> <hr> -->
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Tambah
+              </button>
+            </div>
+            <div class="card-body">
+              <!-- Table -->
+              <table id="table_id" class="display">
+                  <thead>
+                      <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Bulan</th>
+                        <th scope="col">Tahun</th>
+                        <th scope="col">Tanggal Laporan</th>
+                        <th scope="col">Status</th>
+                        <th></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                     $no=1;
+                     foreach ($record as $r) {
+                       echo "<tr>
+                             <td>$no</td>
+                             <td>$r->periode_bulan</td>
+                             <td>$r->periode_tahun</td>
+                             <td>$r->tgl_laporan</td>
+                             <td>$r->status</td>
+                             <td>
+                               <div class='btn btn-warning'>
+                                 <a href='menu/laporan/detail/$r->id' style='color: #fff;'>Detail</a>
+                               </div>
+                               <div class='btn btn-success'>
+                                 <a href='../menu/laporan/edit/$r->id' style='color: #fff;' data-toggle='modal' data-target='#exampleModal1'>Edit</a>
+                               </div>
+                               <div class='btn btn-danger'>
+                               <center><a href='../menu/laporan/hapus/$r->id' style='color: #fff;' class='confirmation1'>Hapus</a></center>
+                               </div>
+                               <div class='btn btn-primary'>
+                                 <a href='../menu/laporan/kirim/$r->id' style='color: #fff;'>Kirim</a>
+                               </div>
+                             </td>
+                       </tr>";
+                       $no++;
+                     }
+                     ?>
+                  </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+  <script type="text/javascript">
+    $('.confirmation1').on('click', function () {
+        return confirm('Apakah yakin ingin menghapus data?');
+    });
+  </script>
 
 <?php $this->load->view('menu/footer'); ?>
