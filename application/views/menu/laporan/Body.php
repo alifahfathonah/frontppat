@@ -115,7 +115,7 @@
             </div>
           </div>
         </div>
-        <hr>
+
         <div class="col-md-12 offset-md-0">
           <div class="card card border-info mb-3">
             <div class="card-header">
@@ -126,48 +126,42 @@
               </button>
             </div>
             <div class="card-body">
-              <!-- Table -->
-              <table id="table_id" class="display">
-                  <thead>
-                      <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Bulan</th>
-                        <th scope="col">Tahun</th>
-                        <th scope="col">Tanggal Laporan</th>
-                        <th scope="col">Status</th>
-                        <th></th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                     $no=1;
-                     foreach ($record as $r) {
-                       echo "<tr>
-                             <td>$no</td>
-                             <td>$r->periode_bulan</td>
-                             <td>$r->periode_tahun</td>
-                             <td>$r->tgl_laporan</td>
-                             <td>$r->status</td>
-                             <td>
-                               <div class='btn btn-warning'>
-                                 <a href='menu/laporan/detail/$r->id' style='color: #fff;'>Detail</a>
-                               </div>
-                               <div class='btn btn-success'>
-                                 <a href='menu/laporan/edit/$r->id' style='color: #fff;' data-toggle='modal' data-target='#exampleModal1'>Edit</a>
-                               </div>
-                               <div class='btn btn-danger'>
-                               <center><a href='menu/laporan/hapus/$r->id' style='color: #fff;' class='confirmation1'>Hapus</a></center>
-                               </div>
-                               <div class='btn btn-primary'>
-                                 <a href='menu/laporan/kirim/$r->id' style='color: #fff;'>Kirim</a>
-                               </div>
-                             </td>
-                       </tr>";
-                       $no++;
-                     }
-                     ?>
-                  </tbody>
-              </table>
+              <div style="overflow-x:auto;">
+                <!-- Table -->
+                <table id="table_id" class="display">
+                    <thead>
+                        <tr>
+                          <th scope="col">No</th>
+                          <th scope="col">Bulan</th>
+                          <th scope="col">Tahun</th>
+                          <th scope="col">Tanggal Laporan</th>
+                          <th scope="col">Status</th>
+                          <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                       $no=1;
+                       foreach ($record as $r) {
+                         echo "<tr>
+                               <td>$no</td>
+                               <td>$r->periode_bulan</td>
+                               <td>$r->periode_tahun</td>
+                               <td>$r->tgl_laporan</td>
+                               <td>$r->status</td>
+                               <td>
+                                  <a href='menu/laporan/detail/$r->id' class='btn btn-warning' style='color: #fff;'>Detail</a>
+                                  <a href='menu/laporan/edit/$r->id' class='btn btn-success' style='color: #fff;' data-toggle='modal' data-target='#exampleModal1'>Edit</a>
+                                  <a href='menu/laporan/hapus/$r->id' class='btn btn-danger' style='color: #fff;' class='confirmation1'>Hapus</a>
+                                  <a href='menu/laporan/kirim/$r->id' class='btn btn-primary' style='color: #fff;'>Kirim</a>
+                               </td>
+                         </tr>";
+                         $no++;
+                       }
+                       ?>
+                    </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

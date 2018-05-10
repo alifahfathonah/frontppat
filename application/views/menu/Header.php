@@ -12,17 +12,25 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/plugin/DataTables/datatables.min.css"/>
 
     <style>
+      hr {
+          display: block;
+          margin-top: 0.5em;
+          margin-bottom: 0.5em;
+          margin-left: auto;
+          margin-right: auto;
+          border-style: inset;
+          border-width: 3px;
+          background: #00a4da;
+      }
       table {
           border-collapse: collapse;
           border-spacing: 0;
-          width: 100%;
-          border: 0px solid #ddd;
+          width: 100%;;
       }
 
       th, td {
           text-align: left;
-          padding: 8px;
-          border: 1px solid black;
+          padding: 8px;;
       }
 
       /* tr:nth-child(even){background-color: #f2f2f2} */

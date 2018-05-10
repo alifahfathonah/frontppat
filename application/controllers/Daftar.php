@@ -12,13 +12,13 @@ class Daftar extends CI_Controller {
 	public function index()
 	{
 		$options = array(
-        'img_path'=>'./captcha/', #folder captcha yg sudah dibuat tadi
-        'img_url'=>base_url('captcha'), #ini arahnya juga ke folder captcha
-        'img_width'=>'150', #lebar image captcha
-        'img_height'=>'28', #tinggi image captcha
-        'expiration'=>7200, #waktu expired
-        // 'font_path' => FCPATH . 'assets/font/coolvetica.ttf', #load font jika mau ganti fontnya
-        'pool' => '0123456789', #tipe captcha (angka/huruf, atau kombinasi dari keduanya)
+        'img_path'		=>'./captcha/',
+        'img_url'			=>base_url('captcha'),
+				'word_length' => 4,
+        'img_width'		=>'150',
+        'img_height'	=>'28',
+        'expiration'	=>7200,
+        'pool' 				=> '0123456789', #tipe captcha (angka/huruf, atau kombinasi dari keduanya)
 
         # atur warna captcha-nya di sini ya.. gunakan kode RGB
         'colors' => array(
@@ -38,12 +38,15 @@ class Daftar extends CI_Controller {
 		$pass = $this->input->post('password');
 		$re  	= $this->input->post('re_password');
 		if ($pass == $re) {
-			$captcha = $this->input->post('captcha_code'); #mengambil value inputan pengguna
-			$word = $this->session->userdata('mycaptcha'); #mengambil value captcha
-			if (isset($captcha)) { #cek variabel $captcha kosong/tidak
-				if (strtoupper($captcha)==strtoupper($word)) { #proses pencocokan captcha
+			$captcha = $this->input->post('captcha_code');
+			$word = $this->session->userdata('mycaptcha');
+			if (isset($captcha)) {
+				if (strtoupper($captcha)==strtoupper($word)) {
 					$this->m_login->daftar();
-					echo " <script>alert('Berhasil daftar!');history.go(-1);</script>";
+					echo "<script>
+							alert('Berhasil daftar!');
+							window.location.href='../login';
+							</script>";
 				}
 				else {
 					echo " <script>alert('Kode Keamanan salah!');history.go(-1);</script>";

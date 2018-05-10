@@ -13,7 +13,7 @@
           <a href="<?php echo base_url()?>index.php/home">Home</a> / <a href="">History</a> / Daftar Penerbitan Akta
         </div>
       </div>
-      <div class="col-md-3 offset-md-0">
+      <div class="col-md-3 offset-md-0" style="margin-bottom: 20px;">
         <ul class="list-group">
           <?php
             foreach ($detail as $a) {
@@ -24,7 +24,6 @@
             }
           ?>
         </ul>
-        <hr>
       </div>
       <div class="col-md-12 offset-md-0">
         <div class="card border-info mb-3">
@@ -33,7 +32,7 @@
           </div>
           <div class="card-body">
             <div style="overflow-x:auto;">
-              <table>
+              <table border="1">
                 <tr>
                   <th rowspan="2">No</th>
                   <th colspan="2"><center>Akta</center></th>

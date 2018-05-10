@@ -12,15 +12,16 @@ class Login extends CI_Controller {
 	public function index()
 	{
 		$options = array(
-        'img_path'=>'./captcha/',
-        'img_url'=>base_url('captcha'),
-        'img_width'=>'150',
-        'img_height'=>'30',
-        'expiration'=>7200,
-        'pool' => '0123456789', #tipe captcha (angka/huruf, atau kombinasi dari keduanya)
+        'img_path'		=>'./captcha/',
+        'img_url'			=>base_url('captcha'),
+				'word_length' => 4,
+        'img_width'		=>'120',
+        'img_height'	=>'30',
+        'expiration'	=>7200,
+        'pool' 				=> '0123456789', #tipe captcha (angka/huruf, atau kombinasi dari keduanya)
 
         'colors' => array(
-                'background' => array(255, 237, 0),
+                'background' => array(242, 242, 242),
                 'border' => array(255, 255, 255),
                 'text' => array(0, 0, 0),
                 'grid' => array(255, 40, 40))
@@ -100,7 +101,7 @@ class Login extends CI_Controller {
 	{
 			session_destroy();
 			echo " <script>alert('Berhasil logout!');history.go(-1);</script>";
-			// redirect('login');
+			redirect('login');
 	}
 
 

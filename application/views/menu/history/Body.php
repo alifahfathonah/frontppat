@@ -15,38 +15,39 @@
           </div>
           <div class="card-body">
             <!-- Table -->
-            <table id="table_id" class="display">
-                <thead>
-                    <tr>
-                      <th scope="col">No</th>
-                      <th scope="col">Bulan</th>
-                      <th scope="col">Tahun</th>
-                      <th scope="col">Tanggal Laporan</th>
-                      <th scope="col">Status</th>
-                      <th scope="col">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  <?php
-                   $no=1;
-                   foreach ($record as $r) {
-                     echo "<tr>
-                           <td>$no</td>
-                           <td>$r->periode_bulan</td>
-                           <td>$r->periode_tahun</td>
-                           <td>$r->tgl_laporan</td>
-                           <td>$r->status</td>
-                           <td>
-                           <div class='btn btn-warning'>
-                             <a href='menu/history/detail/$r->id' style='color: #fff;'>Lihat</a>
-                           </div>
-                           </td>
-                     </tr>";
-                     $no++;
-                   }
-                   ?>
-                </tbody>
-            </table>
+            <div style="overflow-x:auto;">
+              <table id="table_id" class="display">
+                  <thead>
+                      <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Bulan</th>
+                        <th scope="col">Tahun</th>
+                        <th scope="col">Tanggal Laporan</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Aksi</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                     $no=1;
+                     foreach ($record as $r) {
+                       echo "<tr>
+                             <td>$no</td>
+                             <td>$r->periode_bulan</td>
+                             <td>$r->periode_tahun</td>
+                             <td>$r->tgl_laporan</td>
+                             <td>$r->status</td>
+                             <td>
+                               <a href='menu/history/detail/$r->id' class='btn btn-warning' style='color: #fff;'>Lihat</a>
+                               <a href='menu/history/unduh/$r->id' class='btn btn-success' style='color: #fff;'>Download</a>
+                             </td>
+                       </tr>";
+                       $no++;
+                     }
+                     ?>
+                  </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

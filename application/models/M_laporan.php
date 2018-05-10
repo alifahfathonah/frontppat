@@ -5,7 +5,8 @@
   class M_laporan extends ci_model
   {
     function data_laporan(){
-      $sql = "select * from data_laporan where status='Draf' order by tgl_laporan desc";
+      $id = $this->session->userdata('ppat_id');
+      $sql = "select * from data_laporan where status='Draf' and ppat_id='$id' order by tgl_laporan desc";
       return $this->db->query($sql);
     }
 
@@ -55,7 +56,8 @@
     }
 
     function history(){
-      $sql = "select * from data_laporan where status='Terkirim' or status='Diterima' or status='Ditolak' order by tgl_laporan desc";
+      $id = $this->session->userdata('ppat_id');
+      $sql = "select * from data_laporan where status!='Draf' and ppat_id='$id' order by tgl_laporan desc";
       return $this->db->query($sql);
     }
 
@@ -77,6 +79,7 @@
                   'p_menerima_alamat'         => $this->input->post('p_menerima_alamat'),
                   'p_menerima_npwp'           => $this->input->post('p_menerima_npwp'),
                   'jenis_dan_nomor_hak'       => $this->input->post('jenis_dan_nomor_hak'),
+                  'letak_tanah_dan_bangunan'  => $this->input->post('letak_tanah_dan_bangunan'),
                   'luas_tanah'                => $this->input->post('luas_tanah'),
                   'luas_bangunan'             => $this->input->post('luas_bangunan'),
                   'harga_transaksi'           => $this->input->post('harga_transaksi'),
@@ -102,6 +105,7 @@
                   'p_menerima_alamat'         => $this->input->post('p_menerima_alamat'),
                   'p_menerima_npwp'           => $this->input->post('p_menerima_npwp'),
                   'jenis_dan_nomor_hak'       => $this->input->post('jenis_dan_nomor_hak'),
+                  'letak_tanah_dan_bangunan'  => $this->input->post('letak_tanah_dan_bangunan'),
                   'luas_tanah'                => $this->input->post('luas_tanah'),
                   'luas_bangunan'             => $this->input->post('luas_bangunan'),
                   'harga_transaksi'           => $this->input->post('harga_transaksi'),
@@ -119,6 +123,14 @@
     function hapus_list_laporan($id){
       $this->db->where('id',$id);
       $this->db->delete('data_laporan_list');
+    }
+
+    function download($id){
+      $sql = "select * from data_laporan_list
+              join data_laporan on data_laporan.id=data_laporan_list.data_laporan_id
+              join data_ppat on data_ppat.ppat_id=data_laporan.ppat_id
+              where data_laporan_list.data_laporan_id='$id'";
+      return $this->db->query($sql);
     }
   }
 ?>

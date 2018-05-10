@@ -10,22 +10,25 @@
       </div>
       <div class="col"></div>
       <div class="col-lg-8">
-        <form class="" action="<?php echo base_url()?>index.php/menu/akun/edit_password" method="post">
-          <div class="form-group">
-            <label>Password Baru</label>
-            <input type="hidden" class="form-control" name="ppat_id" value="<?php echo $id = $this->session->userdata('ppat_id'); ?>">
-            <input type="password" class="form-control" name="password" placeholder="Masukkan password baru anda">
+        <div class="card" style="border-color: #368ee0;">
+          <div class="card-header" style="background: #368ee0;"></div>
+          <div class="card-body">
+            <form class="" action="<?php echo base_url()?>index.php/menu/akun/edit_password" method="post">
+              <div class="form-group">
+                <label>Password Baru</label>
+                <input type="hidden" class="form-control" name="ppat_id" value="<?php echo $id = $this->session->userdata('ppat_id'); ?>">
+                <input type="password" class="form-control" name="password" placeholder="Masukkan password baru anda">
+              </div>
+              <div class="form-group">
+                <label>Ulangi Password</label>
+                <input type="password" class="form-control" name="re_password" placeholder="Masukkan kembali password anda">
+              </div>
+              <hr>
+              <button type="submit" name="submit" class="btn btn-success" style="color: #fff;">Ganti</button>
+              <a href="<?php echo base_url()?>index.php/home" class='btn btn-danger' style="color: #fff;">Batal</a>
+            </form>
           </div>
-          <div class="form-group">
-            <label>Ulangi Password</label>
-            <input type="password" class="form-control" name="re_password" placeholder="Masukkan kembali password anda">
-          </div>
-          <hr>
-          <button type="submit" name="submit" class="btn btn-success" style="color: #fff;">Ganti</button>
-          <div class="btn btn-danger">
-            <a href="<?php echo base_url()?>index.php/home" style="color: #fff;">Batal</a>
-          </div>
-        </form>
+        </div>
       </div>
       <div class="col"></div>
   </div>

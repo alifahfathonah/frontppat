@@ -11,10 +11,7 @@
       <div class="col-md-8 offset-md-2">
         <div class="card border-info mb-3">
           <div class="card-header">
-            <h4><center>Edit Data Penerbitan Akta</center></h4> <hr>
-            <div class="btn btn-danger">
-              <a href="#" onclick="history.go(-1);" style="color: #fff;">Batal</a>
-            </div>
+            <h4><center>Edit Data Penerbitan Akta</center></h4>
           </div>
           <div class="card-body">
             <form class="" action="" method="post">
@@ -123,6 +120,9 @@
                 <textarea class="form-control" name="keterangan" required="" rows="3"><?php echo $a->keterangan; ?></textarea>
               </div>
               <button type="submit" name="simpan" class="btn btn-success">Simpan</button>
+              <div class="btn btn-danger">
+                <a href="#" onclick="history.go(-1);" style="color: #fff;">Batal</a>
+              </div>
             </form>
           </div>
         </div>

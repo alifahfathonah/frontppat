@@ -31,4 +31,14 @@ class History extends CI_Controller {
 		}
 	}
 
+	public function unduh($id){
+		if ($this->session->userdata('logged_in')) {
+			$data['download'] = $this->m_laporan->download($id)->result();
+			$this->load->view('menu/history/download',$data);
+		}
+		else {
+		redirect('login');
+		}
+	}
+
 }

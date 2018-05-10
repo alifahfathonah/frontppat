@@ -13,7 +13,7 @@
           <a href="<?php echo base_url()?>index.php/home">Home</a> / <a href="">Laporan Penerbitan Akta</a> / Daftar Penerbitan Akta
         </div>
       </div>
-      <div class="col-md-3 offset-md-0">
+      <div class="col-md-3 offset-md-0" style="margin-bottom: 20px;">
         <ul class="list-group">
           <?php
             foreach ($detail as $a) {
@@ -149,22 +149,16 @@
             </div>
           </div>
         </div>
-        <hr>
       </div>
       <div class="col-md-12 offset-md-0">
         <div class="card border-info mb-3">
           <div class="card-header">
-            <!-- <center>Daftar Penerbitan Akta</center> <hr> -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Tambah</button>
-            <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Edit</button>
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Hapus</button> -->
-            <div class="btn btn-success">
-              <a href="<?php echo base_url()?>index.php/laporan" style="color: #fff;">Selesai</a>
-            </div>
+            <a href="<?php echo base_url()?>index.php/laporan" class='btn btn-success' style="color: #fff;">Selesai</a>
           </div>
           <div class="card-body">
             <div style="overflow-x:auto;">
-              <table>
+              <table border="1">
                 <tr>
                   <th rowspan="2">No</th>
                   <th colspan="2"><center>Akta</center></th>
