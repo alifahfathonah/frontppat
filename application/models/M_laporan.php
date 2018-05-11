@@ -20,6 +20,11 @@
       return $query;
     }
 
+    function cek_data_list($data){
+      $query = $this->db->get_where('data_laporan_list',$data);
+      return $query;
+    }
+
     function tambah($status){
       $data=array(
                   'ppat_id'       => $this->input->post('ppat_id'),

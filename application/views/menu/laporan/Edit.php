@@ -119,8 +119,8 @@
                 <label>Keterangan</label>
                 <textarea class="form-control" name="keterangan" required="" rows="3"><?php echo $a->keterangan; ?></textarea>
               </div>
-              <button type="submit" name="simpan" class="btn btn-success">Simpan</button>
-              <div class="btn btn-danger">
+              <button type="submit" name="simpan" class="btn btn-success btn-sm">Simpan</button>
+              <div class="btn btn-danger btn-sm">
                 <a href="#" onclick="history.go(-1);" style="color: #fff;">Batal</a>
               </div>
             </form>

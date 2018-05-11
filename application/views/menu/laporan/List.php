@@ -102,7 +102,7 @@
                     <input type="number" class="form-control" name="harga_transaksi" required="">
                   </div>
                   <div class="form-group">
-                    <label>NOP SPPT PBB</label>
+                    <label>NOP Tahun SPPT PBB</label>
                     <select class="custom-select" id="inputGroupSelect01" name="sppt_pbb_nop_tahun" required="">
                       <option selected>Pilih...</option>
                       <?php
@@ -117,7 +117,7 @@
                     <!-- <input type="text" class="form-control" name="sppt_pbb_nop_tahun" required=""> -->
                   </div>
                   <div class="form-group">
-                    <label>NJOP SPPT PBB</label>
+                    <label>NJOP (Rp) SPPT PBB</label>
                     <input type="number" class="form-control" name="sppt_ppb_njop" required="">
                   </div>
                   <div class="form-group">
@@ -140,11 +140,11 @@
                     <label>Keterangan</label>
                     <textarea class="form-control" name="keterangan" required="" rows="3"></textarea>
                   </div>
-                  <button type="submit" name="simpan" class="btn btn-success">Simpan</button>
+                  <button type="submit" name="simpan" class="btn btn-success btn-sm">Simpan</button>
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Batal</button>
               </div>
             </div>
           </div>
@@ -153,8 +153,8 @@
       <div class="col-md-12 offset-md-0">
         <div class="card border-info mb-3">
           <div class="card-header">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Tambah</button>
-            <a href="<?php echo base_url()?>index.php/laporan" class='btn btn-success' style="color: #fff;">Selesai</a>
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">Tambah</button>
+            <a href="<?php echo base_url()?>index.php/laporan btn-sm" class='btn btn-success' style="color: #fff;">Selesai</a>
           </div>
           <div class="card-body">
             <div style="overflow-x:auto;">
@@ -165,7 +165,8 @@
                   <th rowspan="2"><center>Bentuk Perbuatan Hukum</center></th>
                   <th colspan="2"><center>Nama Alamat dan NPWP</center></th>
                   <th rowspan="2"><center>Jenis dan Nomor Hak</center></th>
-                  <th colspan="2"><center>Luas</center></th>
+                  <th rowspan="2"><center>Letak Tanah dan Bangunan</center></th>
+                  <th colspan="2"><center>Luas (m2)</center></th>
                   <th rowspan="2"><center>Harga Transaksi Perolehan/Pengalihan Hak</center></th>
                   <th colspan="2"><center>SPPT PBB</center></th>
                   <th colspan="2"><center>SSP</center></th>
@@ -199,6 +200,7 @@
                            <td>$r->p_mengalihkan_nama</td>
                            <td>$r->p_menerima_nama</td>
                            <td>$r->jenis_dan_nomor_hak</td>
+                           <td>$r->letak_tanah_dan_bangunan</td>
                            <td>$r->luas_tanah</td>
                            <td>$r->luas_bangunan</td>
                            <td>$r->harga_transaksi</td>
@@ -210,10 +212,10 @@
                            <td>$r->sspd_bphtb_nominal</td>
                            <td>$r->keterangan</td>
                            <td>
-                             <div class='btn btn-success'>
+                             <div class='btn btn-success btn-sm'>
                                <center><a href='../edit_laporan_list/$r->id' style='color: #fff;'>Edit</a></center>
                              </div>
-                             <div class='btn btn-danger'>
+                             <div class='btn btn-danger btn-sm'>
                                <center><a href='../hapus_laporan_list/$r->id' style='color: #fff;' class='confirmation'>Hapus</a></center>
                              </div>
                            </td>

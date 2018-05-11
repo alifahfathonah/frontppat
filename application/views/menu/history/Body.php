@@ -24,6 +24,7 @@
                         <th scope="col">Tahun</th>
                         <th scope="col">Tanggal Laporan</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Keterangan</th>
                         <th scope="col">Aksi</th>
                       </tr>
                   </thead>
@@ -37,9 +38,9 @@
                              <td>$r->periode_tahun</td>
                              <td>$r->tgl_laporan</td>
                              <td>$r->status</td>
+                             <td>$r->keterangan</td>
                              <td>
-                               <a href='menu/history/detail/$r->id' class='btn btn-warning' style='color: #fff;'>Lihat</a>
-                               <a href='menu/history/unduh/$r->id' class='btn btn-success' style='color: #fff;'>Download</a>
+                               <a href='menu/history/detail/$r->id' class='btn btn-warning btn-sm' style='color: #fff;'>Lihat</a>
                              </td>
                        </tr>";
                        $no++;

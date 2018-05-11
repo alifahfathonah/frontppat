@@ -29,6 +29,7 @@
         <div class="card border-info mb-3">
           <div class="card-header">
             <p><center>Daftar Penerbitan Akta</center></p>
+            <a href="<?php echo base_url()?>index.php/history" class='btn btn-success btn-sm' style="color: #fff;">Kembali</a>
           </div>
           <div class="card-body">
             <div style="overflow-x:auto;">
@@ -39,7 +40,8 @@
                   <th rowspan="2"><center>Bentuk Perbuatan Hukum</center></th>
                   <th colspan="2"><center>Nama Alamat dan NPWP</center></th>
                   <th rowspan="2"><center>Jenis dan Nomor Hak</center></th>
-                  <th colspan="2"><center>Luas</center></th>
+                  <th rowspan="2"><center>Letak Tanah dan Bangunan</center></th>
+                  <th colspan="2"><center>Luas (m2)</center></th>
                   <th rowspan="2"><center>Harga Transaksi Perolehan/Pengalihan Hak</center></th>
                   <th colspan="2"><center>SPPT PBB</center></th>
                   <th colspan="2"><center>SSP</center></th>
@@ -72,6 +74,7 @@
                            <td>$r->p_mengalihkan_nama</td>
                            <td>$r->p_menerima_nama</td>
                            <td>$r->jenis_dan_nomor_hak</td>
+                           <td>$r->letak_tanah_dan_bangunan</td>
                            <td>$r->luas_tanah</td>
                            <td>$r->luas_bangunan</td>
                            <td>$r->harga_transaksi</td>

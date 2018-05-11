@@ -21,19 +21,26 @@ class Laporan extends CI_Controller {
 
 	public function tambah(){
 		if (isset($_POST['simpan'])) {
-			$status = 'Draf';
-			$data = array(
-					'periode_bulan' => $this->input->post('periode_bulan'),
-					'periode_tahun' => $this->input->post('periode_tahun')
-			);
-			$cek = $this->m_laporan->cek_data($data);
-			if ($cek->num_rows() == 1)
-			{
-				echo " <script>alert('Data sudah ada!');history.go(-1);</script>";
+			$bln = $this->input->post('periode_bulan');
+			$thn = $this->input->post('periode_tahun');
+			if ($bln == '0' or $thn == '0') {
+				echo " <script>alert('Forw wajib diisi!');history.go(-1);</script>";
 			}
 			else {
-				$this->m_laporan->tambah($status);
-				echo " <script>alert('Laporan berhasil ditambah!');history.go(-1);</script>";
+				$status = 'Draf';
+				$data = array(
+						'periode_bulan' => $this->input->post('periode_bulan'),
+						'periode_tahun' => $this->input->post('periode_tahun')
+				);
+				$cek = $this->m_laporan->cek_data($data);
+				if ($cek->num_rows() == 1)
+				{
+					echo " <script>alert('Data sudah ada!');history.go(-1);</script>";
+				}
+				else {
+					$this->m_laporan->tambah($status);
+					echo " <script>alert('Laporan berhasil ditambah!');history.go(-1);</script>";
+				}
 			}
 		}
 		else {
@@ -56,19 +63,26 @@ class Laporan extends CI_Controller {
 	public function edit(){
 		if ($this->session->userdata('logged_in')) {
 			if (isset($_POST['edit'])) {
-				$data = array(
-						'periode_bulan' => $this->input->post('periode_bulan'),
-						'periode_tahun' => $this->input->post('periode_tahun')
-				);
-				$cek = $this->m_laporan->cek_data($data);
-				if ($cek->num_rows() == 1)
-				{
-					echo " <script>alert('Data sudah ada!');history.go(-1);</script>";
+				$bln = $this->input->post('periode_bulan');
+				$thn = $this->input->post('periode_tahun');
+				if ($bln == '0' or $thn == '0') {
+					echo " <script>alert('Forw wajib diisi!');history.go(-1);</script>";
 				}
 				else {
-					$id = $this->input->post('id');
-					$this->m_laporan->edit($id);
-					echo " <script>alert('Edit laporan berhasil!');history.go(-1);</script>";
+					$data = array(
+							'periode_bulan' => $this->input->post('periode_bulan'),
+							'periode_tahun' => $this->input->post('periode_tahun')
+					);
+					$cek = $this->m_laporan->cek_data($data);
+					if ($cek->num_rows() == 1)
+					{
+						echo " <script>alert('Data sudah ada!');history.go(-1);</script>";
+					}
+					else {
+						$id = $this->input->post('id');
+						$this->m_laporan->edit($id);
+						echo " <script>alert('Edit laporan berhasil!');history.go(-1);</script>";
+					}
 				}
 			}
 			else {
@@ -93,9 +107,18 @@ class Laporan extends CI_Controller {
 
 	public function kirim($id){
 		if ($this->session->userdata('logged_in')) {
-			$this->m_laporan->kirim($id);
-			echo " <script>alert('Laporan berhasil dikirim!');history.go(-1);</script>";
-			//redirect('menu/laporan');
+			$data = array(
+					'data_laporan_id' => $id
+			);
+			$cek = $this->m_laporan->cek_data_list($data);
+			if ($cek->num_rows() >= 1)
+			{
+				$this->m_laporan->kirim($id);
+				echo " <script>alert('Laporan berhasil dikirim!');history.go(-1);</script>";
+			}
+			else {
+				echo " <script>alert('Silahkan lengkapi data terlebih dahulu!');history.go(-1);</script>";
+			}
 		}
 		else {
 			redirect('login');

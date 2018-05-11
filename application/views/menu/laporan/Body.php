@@ -24,7 +24,7 @@
                   <div class="form-group">
                     <label>Bulan</label>
                     <select class="custom-select" id="inputGroupSelect01" name="periode_bulan">
-                      <option selected>Pilih...</option>
+                      <option selected value="0">Pilih...</option>
                       <?php
                         $bulan=array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
                         $angka=array("01","02","03","04","05","06","07","08","09","10","11","12");
@@ -38,7 +38,7 @@
                   <div class="form-group">
                     <label>Tahun</label>
                     <select class="custom-select" id="inputGroupSelect01" name="periode_tahun">
-                      <option selected>Pilih...</option>
+                      <option selected value="0">Pilih...</option>
                       <?php
                         $thn_skr = date('Y');
                         for ($x = $thn_skr; $x >= 2010; $x--) {
@@ -52,11 +52,11 @@
                     <input type="hidden" name="ppat_id" value="<?php echo $this->session->userdata('ppat_id'); ?>">
                     <input type="hidden" name="tgl_laporan" value="<?php echo $tgl=Date("d-m-Y H:i:s");?>">
                   </div>
-                  <button type="submit" name="simpan" class="btn btn-success">Next</button>
+                  <button type="submit" name="simpan" class="btn btn-success btn-sm">Next</button>
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Batal</button>
               </div>
             </div>
           </div>
@@ -78,7 +78,7 @@
                     <label>Bulan</label>
                     <input type="hidden" name="id" value="<?php echo $r->id; ?>">
                     <select class="custom-select" id="inputGroupSelect01" name="periode_bulan">
-                      <option selected>Pilih...</option>
+                      <option selected value="0">Pilih...</option>
                       <?php
                         $bulan=array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
                         $angka=array("01","02","03","04","05","06","07","08","09","10","11","12");
@@ -92,7 +92,7 @@
                   <div class="form-group">
                     <label>Tahun</label>
                     <select class="custom-select" id="inputGroupSelect01" name="periode_tahun">
-                      <option selected>Pilih...</option>
+                      <option selected value="0">Pilih...</option>
                       <?php
                         $thn_skr = date('Y');
                         for ($x = $thn_skr; $x >= 2010; $x--) {
@@ -121,7 +121,7 @@
             <div class="card-header">
               <!-- <center>Data Laporan</center> <hr> -->
               <!-- Button trigger modal -->
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
                 Tambah
               </button>
             </div>
@@ -136,7 +136,7 @@
                           <th scope="col">Tahun</th>
                           <th scope="col">Tanggal Laporan</th>
                           <th scope="col">Status</th>
-                          <th></th>
+                          <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -150,10 +150,10 @@
                                <td>$r->tgl_laporan</td>
                                <td>$r->status</td>
                                <td>
-                                  <a href='menu/laporan/detail/$r->id' class='btn btn-warning' style='color: #fff;'>Detail</a>
-                                  <a href='menu/laporan/edit/$r->id' class='btn btn-success' style='color: #fff;' data-toggle='modal' data-target='#exampleModal1'>Edit</a>
-                                  <a href='menu/laporan/hapus/$r->id' class='btn btn-danger' style='color: #fff;' class='confirmation1'>Hapus</a>
-                                  <a href='menu/laporan/kirim/$r->id' class='btn btn-primary' style='color: #fff;'>Kirim</a>
+                                  <a href='menu/laporan/detail/$r->id' class='btn btn-warning btn-sm' style='color: #fff;'>Detail</a>
+                                  <a href='menu/laporan/edit/$r->id' class='btn btn-success btn-sm' style='color: #fff;' data-toggle='modal' data-target='#exampleModal1'>Edit</a>
+                                  <a href='menu/laporan/hapus/$r->id' class='btn btn-danger btn-sm' style='color: #fff;' class='confirmation1'>Hapus</a>
+                                  <a href='menu/laporan/kirim/$r->id' class='btn btn-primary btn-sm' style='color: #fff;'>Kirim</a>
                                </td>
                          </tr>";
                          $no++;

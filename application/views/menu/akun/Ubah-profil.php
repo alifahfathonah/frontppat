@@ -37,8 +37,8 @@
                 <input type="text" class="form-control" name="daerah_kerja" value="<?php echo $r->daerah_kerja; ?>" required="">
               </div>
               <hr>
-              <button type="submit" name="submit" class="btn btn-success" style="color: #fff;">Simpan</button>
-              <a href="<?php echo base_url()?>index.php/home" class='btn btn-danger' style="color: #fff;">Batal</a>
+              <button type="submit" name="submit" class="btn btn-success btn-sm" style="color: #fff;">Simpan</button>
+              <a href="<?php echo base_url()?>index.php/home" class='btn btn-danger btn-sm' style="color: #fff;">Batal</a>
             </form>
           </div>
         </div>

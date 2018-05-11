@@ -24,8 +24,8 @@
                 <input type="password" class="form-control" name="re_password" placeholder="Masukkan kembali password anda">
               </div>
               <hr>
-              <button type="submit" name="submit" class="btn btn-success" style="color: #fff;">Ganti</button>
-              <a href="<?php echo base_url()?>index.php/home" class='btn btn-danger' style="color: #fff;">Batal</a>
+              <button type="submit" name="submit" class="btn btn-success btn-sm" style="color: #fff;">Ganti</button>
+              <a href="<?php echo base_url()?>index.php/home" class='btn btn-danger btn-sm' style="color: #fff;">Batal</a>
             </form>
           </div>
         </div>
