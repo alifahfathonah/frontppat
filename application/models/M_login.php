@@ -18,6 +18,7 @@
                   'nama_ppat'   => $this->input->post('nama_ppat'),
                   'alamat_ppat' => $this->input->post('alamat_ppat'),
                   'npwp'        => $this->input->post('npwp'),
+                  'daerah_kerja'=> $this->input->post('daerah_kerja'),
                   'tgl_daftar'  => $this->input->post('tgl_daftar'));
       $this->db->insert('data_ppat',$data);
     }

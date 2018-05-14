@@ -11,27 +11,32 @@ class Daftar extends CI_Controller {
 
 	public function index()
 	{
-		$options = array(
-        'img_path'		=>'./captcha/',
-        'img_url'			=>base_url('captcha'),
-				'word_length' => 4,
-        'img_width'		=>'150',
-        'img_height'	=>'28',
-        'expiration'	=>7200,
-        'pool' 				=> '0123456789', #tipe captcha (angka/huruf, atau kombinasi dari keduanya)
+		if ($this->session->userdata('logged_in') == 'Sudah Login') {
+			redirect('home');
+		}
+		else {
+			$options = array(
+	        'img_path'		=>'./captcha/',
+	        'img_url'			=>base_url('captcha'),
+					'word_length' => 4,
+	        'img_width'		=>'150',
+	        'img_height'	=>'28',
+	        'expiration'	=>120,
+	        'pool' 				=> '0123456789', #tipe captcha (angka/huruf, atau kombinasi dari keduanya)
 
-        # atur warna captcha-nya di sini ya.. gunakan kode RGB
-        'colors' => array(
-                'background' => array(242, 242, 242),
-                'border' => array(255, 255, 255),
-                'text' => array(0, 0, 0),
-                'grid' => array(255, 40, 40))
-           );
-    $cap = create_captcha($options);
-    $data['image'] = $cap['image'];
-    $this->session->set_userdata('mycaptcha', $cap['word']);
-    $data['word'] = $this->session->userdata('mycaptcha');
-		$this->load->view('daftar', $data);
+	        # atur warna captcha-nya di sini ya.. gunakan kode RGB
+	        'colors' => array(
+	                'background' => array(242, 242, 242),
+	                'border' => array(255, 255, 255),
+	                'text' => array(0, 0, 0),
+	                'grid' => array(255, 40, 40))
+	           );
+	    $cap = create_captcha($options);
+	    $data['image'] = $cap['image'];
+	    $this->session->set_userdata('mycaptcha', $cap['word']);
+	    $data['word'] = $this->session->userdata('mycaptcha');
+			$this->load->view('daftar', $data);
+		}
 	}
 
 	public function aksi_daftar(){

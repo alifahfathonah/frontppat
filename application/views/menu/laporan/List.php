@@ -154,7 +154,7 @@
         <div class="card border-info mb-3">
           <div class="card-header">
             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">Tambah</button>
-            <a href="<?php echo base_url()?>index.php/laporan btn-sm" class='btn btn-success' style="color: #fff;">Selesai</a>
+            <a href="<?php echo base_url()?>index.php/laporan" class='btn btn-success btn-sm' style="color: #fff;">Selesai</a>
           </div>
           <div class="card-body">
             <div style="overflow-x:auto;">

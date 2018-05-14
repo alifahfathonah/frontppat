@@ -63,19 +63,24 @@
                 </div>
                 <div class="form-group">
                   <label>Password</label>
-                  <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password anda" required="">
+                  <input type="password" class="form-control" id="password" name="password" minlength="5" maxlength="10" placeholder="Masukkan password anda" required="">
                 </div>
                 <div class="form-group">
                   <label>Ulangi Password</label>
-                  <input type="password" class="form-control" id="re_password" name="re_password" placeholder="Masukkan passwod anda lagi" required="">
+                  <input type="password" class="form-control" id="re_password" name="re_password" minlength="5" maxlength="10" placeholder="Masukkan passwod anda lagi" required="">
                 </div>
                 <!-- <div class="form-group">
                   <label>Tanggal SK</label>
                   <input class="form-control" id="datepicker" name="tgl" width="300" required="">
                 </div> -->
                 <div class="form-group">
-                  <label>Nama PPTK</label>
+                  <label>Nama PPATK</label>
                   <input type="text" class="form-control" id="nama_ppat" name="nama_ppat" placeholder="Masukkan nama PPTK" required="">
+                </div>
+                <div class="form-group">
+                  <label>Alamat PPATK</label>
+                  <!-- <input type="text" class="form-control" id="alamat_ppat" name="alamat_ppat" rows="3"> -->
+                  <textarea class="form-control" name="alamat_ppat" required="" rows="3"></textarea>
                 </div>
                 <div class="form-group">
                   <label>NPWP</label>
@@ -96,9 +101,7 @@
                 </div>
                 <hr>
                 <button type="submit" class="btn btn-success" style="color: #fff;">Daftar</button>
-                <div class="btn btn-danger">
-                  <a href="<?php echo base_url()?>index.php/login" style="color: #fff;">Batal</a>
-                </div>
+                <a href="<?php echo base_url()?>index.php/login" class="btn btn-danger" style="color: #fff;">Batal</a>
               </form>
             </div>
             <div class="card-footer text-muted"></div>

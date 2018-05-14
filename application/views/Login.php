@@ -69,7 +69,7 @@
                         <?=$image;?>
                         <input type="text" name="captcha_code" required="">
                       </div>
-                      <button type="submit" class="btn btn-success" style="color: #fff;">Login</button>
+                      <button type="submit" name="login" class="btn btn-success" style="color: #fff;">Login</button>
                       <a href="#"  data-toggle="modal" data-target="#exampleModal">Lupa Password?</a>
                     </form>
                   </div>
