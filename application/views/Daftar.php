@@ -63,11 +63,11 @@
                 </div>
                 <div class="form-group">
                   <label>Password</label>
-                  <input type="password" class="form-control" id="password" name="password" minlength="5" maxlength="10" placeholder="Masukkan password anda" required="">
+                  <input type="password" class="form-control" id="password" name="password" minlength="5" maxlength="20" placeholder="Masukkan password anda" required="">
                 </div>
                 <div class="form-group">
                   <label>Ulangi Password</label>
-                  <input type="password" class="form-control" id="re_password" name="re_password" minlength="5" maxlength="10" placeholder="Masukkan passwod anda lagi" required="">
+                  <input type="password" class="form-control" id="re_password" name="re_password" minlength="5" maxlength="20" placeholder="Masukkan passwod anda lagi" required="">
                 </div>
                 <!-- <div class="form-group">
                   <label>Tanggal SK</label>

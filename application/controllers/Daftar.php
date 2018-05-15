@@ -42,24 +42,33 @@ class Daftar extends CI_Controller {
 	public function aksi_daftar(){
 		$pass = $this->input->post('password');
 		$re  	= $this->input->post('re_password');
-		if ($pass == $re) {
-			$captcha = $this->input->post('captcha_code');
-			$word = $this->session->userdata('mycaptcha');
-			if (isset($captcha)) {
-				if (strtoupper($captcha)==strtoupper($word)) {
-					$this->m_login->daftar();
-					echo "<script>
-							alert('Berhasil daftar!');
-							window.location.href='../login';
-							</script>";
-				}
-				else {
-					echo " <script>alert('Kode Keamanan salah!');history.go(-1);</script>";
-				}
-			}
+		$data = array(
+				'no_sk_ppat' => $this->input->post('no_sk_ppat')
+		);
+		$cek = $this->m_login->cek_data($data);
+		if ($cek->num_rows() == 1){
+			echo " <script>alert('No SK PPATK sudah terdaftar!');history.go(-1);</script>";
 		}
 		else {
-			echo " <script>alert('Password tidak sama!');history.go(-1);</script>";
+			if ($pass == $re) {
+				$captcha = $this->input->post('captcha_code');
+				$word = $this->session->userdata('mycaptcha');
+				if (isset($captcha)) {
+					if (strtoupper($captcha)==strtoupper($word)) {
+						$this->m_login->daftar();
+						echo "<script>
+								alert('Berhasil daftar!');
+								window.location.href='../login';
+								</script>";
+					}
+					else {
+						echo " <script>alert('Kode Keamanan salah!');history.go(-1);</script>";
+					}
+				}
+			}
+			else {
+				echo " <script>alert('Password tidak sama!');history.go(-1);</script>";
+			}
 		}
 	}
 }

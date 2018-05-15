@@ -21,12 +21,12 @@
                 <input type="text" class="form-control" name="no_sk_ppat" value="<?php echo $r->no_sk_ppat; ?>" required="">
               </div>
               <div class="form-group">
-                <label>Nama PPTK</label>
+                <label>Nama PPATK</label>
                 <input type="text" class="form-control" name="nama_ppat" value="<?php echo $r->nama_ppat; ?>" required="">
               </div>
               <div class="form-group">
-                <label>Alamat PPAT</label>
-                <input type="text" class="form-control" name="alamat_ppat" value="<?php echo $r->alamat_ppat; ?>" required="">
+                <label>Alamat PPATK</label>
+                <textarea class="form-control" name="alamat_ppat" rows="3" required=""><?php echo $r->alamat_ppat; ?></textarea>
               </div>
               <div class="form-group">
                 <label>Nomor Pokok Wajib Pajak</label>
@@ -34,7 +34,7 @@
               </div>
               <div class="form-group">
                 <label>Daerah Kerja</label>
-                <input type="text" class="form-control" name="daerah_kerja" value="<?php echo $r->daerah_kerja; ?>" required="">
+                <textarea class="form-control" name="daerah_kerja" rows="3" required=""><?php echo $r->daerah_kerja; ?></textarea>
               </div>
               <hr>
               <button type="submit" name="submit" class="btn btn-success btn-sm" style="color: #fff;">Simpan</button>
@@ -44,6 +44,7 @@
         </div>
       </div>
       <div class="col"></div>
+    </div>
   </div>
 
 <?php $this->load->view('menu/footer'); ?>

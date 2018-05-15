@@ -20,11 +20,17 @@ class History extends CI_Controller {
 		}
 	}
 
-	public function detail($id){
+	public function detail(){
 		if ($this->session->userdata('logged_in')) {
-			$data['detail'] = $this->m_laporan->detail($id)->result();
-			$data['laporan'] = $this->m_laporan->list_laporan($id)->result();
-			$this->load->view('menu/history/list',$data);
+			$id =  $this->uri->segment(4);
+			if ($id == null) {
+				redirect('history');
+			}
+			else {
+				$data['detail'] = $this->m_laporan->detail($id)->result();
+				$data['laporan'] = $this->m_laporan->list_laporan($id)->result();
+				$this->load->view('menu/history/list',$data);
+			}
 		}
 		else {
 			redirect('login');

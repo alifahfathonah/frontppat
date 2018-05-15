@@ -21,7 +21,7 @@ class Login extends CI_Controller {
 					'word_length' => 4,
 					'img_width'		=>'120',
 					'img_height'	=>'30',
-					'expiration'	=>60,
+					'expiration'	=> 7200,
 					'pool' 				=> '0123456789', #tipe captcha (angka/huruf, atau kombinasi dari keduanya)
 
 					'colors' => array(
@@ -62,7 +62,7 @@ class Login extends CI_Controller {
 						{
 							redirect('home', $sess_data);
 						}
-						redirect('home', $sess_data);
+						// redirect('home', $sess_data);
 					}
 					else
 					{
@@ -81,30 +81,30 @@ class Login extends CI_Controller {
 
 	public function reset(){
 		if (isset($_POST['reset'])) {
-			if (isset($_POST['reset'])) {
-		  	if (strtoupper($captcha)==strtoupper($word)) {
-					$data = array(
-							'no_sk_ppat' => $this->input->post('no_sk_ppat')
-					);
-					$cek = $this->m_login->login($data);
-					if ($cek->num_rows() == 1){
-						$pass = $this->input->post('password');
-						$re   = $this->input->post('re_password');
-						if ($pass==$re) {
-							$this->m_login->reset_pass();
-								echo " <script>alert('Password berhasil di reset!');history.go(-1);</script>";
-						}
-						else {
-							echo " <script>alert('Password tidak cocok!');history.go(-1);</script>";
-						}
+			$captcha = $this->input->post('captcha_code');
+			$word = $this->session->userdata('mycaptcha');
+			if (strtoupper($captcha)==strtoupper($word)) {
+				$data = array(
+						'no_sk_ppat' => $this->input->post('no_sk_ppat')
+				);
+				$cek = $this->m_login->login($data);
+				if ($cek->num_rows() == 1){
+					$pass = $this->input->post('password');
+					$re   = $this->input->post('re_password');
+					if ($pass==$re) {
+						$this->m_login->reset_pass();
+							echo " <script>alert('Password berhasil di reset!');history.go(-1);</script>";
 					}
 					else {
-						echo " <script>alert('No SK PTTK tidak ditemukan!');history.go(-1);</script>";
+						echo " <script>alert('Password tidak cocok!');history.go(-1);</script>";
 					}
 				}
 				else {
-					echo " <script>alert('Kode keamanan salah!');history.go(-1);</script>";
+					echo " <script>alert('No SK PPATK tidak ditemukan!');history.go(-1);</script>";
 				}
+			}
+			else {
+				echo " <script>alert('Kode keamanan salah!');history.go(-1);</script>";
 			}
 		}
 		else {
@@ -113,8 +113,7 @@ class Login extends CI_Controller {
 	}
 
 	public function logout()
-	{
-			//$this->session->unset_userdata('logged_in','no_sk_ppat','ppat_id');
+	{	
 			session_destroy();
 			echo " <script>alert('Berhasil logout!');history.go(-1);</script>";
 			redirect('login');

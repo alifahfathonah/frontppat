@@ -10,6 +10,11 @@
       return $query;
     }
 
+    function cek_data($data){
+      $query = $this->db->get_where('data_ppat',$data);
+      return $query;
+    }
+
     function daftar()
     {
       $data=array(

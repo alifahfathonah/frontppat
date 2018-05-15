@@ -152,7 +152,7 @@
                                <td>
                                   <a href='menu/laporan/detail/$r->id' class='btn btn-warning btn-sm' style='color: #fff;'>Detail</a>
                                   <a href='menu/laporan/edit/$r->id' class='btn btn-success btn-sm' style='color: #fff;' data-toggle='modal' data-target='#exampleModal1'>Edit</a>
-                                  <a href='menu/laporan/hapus/$r->id' class='btn btn-danger btn-sm' style='color: #fff;' class='confirmation1'>Hapus</a>
+                                  <a href='#' class='btn btn-danger btn-sm' style='color: #fff;' data-toggle='modal' data-target='#hapus'>Hapus</a>
                                   <a href='menu/laporan/kirim/$r->id' class='btn btn-primary btn-sm' style='color: #fff;'>Kirim</a>
                                </td>
                          </tr>";
@@ -161,6 +161,26 @@
                        ?>
                     </tbody>
                 </table>
+              </div>
+            </div>
+            <div class="modal" id="hapus">
+              <div class="modal-dialog">
+                <div class="modal-content">
+
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <p>Apakah yakin ingin menghapus data?</p>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    <form action="menu/laporan/hapus/<?php echo $r->id; ?>" method="post">
+            						<button type="submit" class="btn btn-success btn-sm">Ya</button>
+            						<button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Batal</button>
+            				</form>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

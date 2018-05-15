@@ -49,11 +49,17 @@ class Laporan extends CI_Controller {
 		}
 	}
 
-	public function detail($id){
+	public function detail(){
 		if ($this->session->userdata('logged_in')) {
-			$data['detail'] = $this->m_laporan->detail($id)->result();
-			$data['laporan'] = $this->m_laporan->list_laporan($id)->result();
-			$this->load->view('menu/laporan/list',$data);
+			$id =  $this->uri->segment(4);
+			if ($id == null) {
+				redirect('laporan');
+			}
+			else {
+				$data['detail'] = $this->m_laporan->detail($id)->result();
+				$data['laporan'] = $this->m_laporan->list_laporan($id)->result();
+				$this->load->view('menu/laporan/list',$data);
+			}
 		}
 		else {
 			redirect('login');

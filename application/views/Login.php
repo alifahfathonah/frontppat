@@ -97,21 +97,23 @@
               <div class="modal-body">
                 <form class="" action="<?php echo base_url()?>index.php/login/reset" method="post">
                   <div class="form-group">
-                    <label style="color: #000;">No SK PTTK</label>
-                    <input type="text" class="form-control" name="no_sk_ppat" placeholder="Masukkan No SK PTTK anda" required="">
+                    <label style="color: #000;">No SK PPATK</label>
+                    <input type="text" class="form-control" name="no_sk_ppat" placeholder="Masukkan No SK PPATK anda" required="">
                   </div>
                   <div class="form-group">
                     <label style="color: #000;">Password</label>
-                    <input type="password" class="form-control" name="password" placeholder="Masukkan password baru anda" required="">
+                    <input type="password" class="form-control" name="password" minlength="5" maxlength="20" placeholder="Masukkan password baru anda" required="">
                   </div>
                   <div class="form-group">
                     <label style="color: #000;">Ulangi Password</label>
-                    <input type="password" class="form-control" name="re_password" placeholder="Masukkan kembali password baru anda" required="">
+                    <input type="password" class="form-control" name="re_password" minlength="5" maxlength="20" placeholder="Masukkan kembali password baru anda" required="">
                   </div>
                   <div class="form-group">
                     <label style="color: #000;">Kode Keamanan</label>
+                  </div>
+                  <div class="form-group" style="margin-top: -15px;">
                     <?=$image;?>
-                    <input type="text" class="form-control" name="captcha_code" placeholder="Masukkan kode keamanan" required="">
+                    <input type="text" name="captcha_code" required="">
                   </div>
                   <button type="submit" name="reset" class="btn btn-success">Reset</button>
                 </form>
